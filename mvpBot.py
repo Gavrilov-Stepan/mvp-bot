@@ -92,14 +92,14 @@ def start(message):
     reply_mess1 = "Welcome, {user_name}! It's Google Sheets Bot.".format(user_name=message.from_user.first_name)
     reply_mess2 = 'Please enter the interval between reminds in the format: hrs.min.sec'
 
-    buttons = telebot.types.ReplyKeyboardMarkup()
+    buttons = telebot.types.ReplyKeyboardMarkup(resize_keyboard=True, row_width=2)
     button1 = telebot.types.KeyboardButton("Видеоматериалы")
     button2 = telebot.types.KeyboardButton("Дополнительные Материалы")
     buttons.add(button1, button2)
 
     TGbot.send_message(message.chat.id, reply_mess1)
     TGbot.send_message(message.chat.id, reply_mess2)
-    TGbot.send_message(message.chat.id, "также можете выбрать одну из функций:",    reply_markup=buttons)
+    TGbot.send_message(message.chat.id, "также можете выбрать одну из функций:", reply_markup=buttons)
 
 
 @TGbot.message_handler(content_types=['text'])
